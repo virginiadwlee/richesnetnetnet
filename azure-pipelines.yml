@@ -31,7 +31,7 @@ steps:
 
 - task: FortifySCA@7
   inputs:
-    licenseFile: 'c:\fortify.license'
+
     runBuildTranslate: true
     applicationType: 'dotnet'
     fortifyProjects: '**\*.sln'
