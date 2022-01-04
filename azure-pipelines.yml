@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  Test 2
 
 variables:
   solution: '**/*.sln'
@@ -28,6 +28,20 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+
+- task: FortifySCA@7
+  inputs:
+    licenseFile: 'c:\fortify.license'
+    runBuildTranslate: true
+    applicationType: 'dotnet'
+    fortifyProjects: '**\*.sln'
+    fortifyBuildId: '0104riches'
+    runFortifyRulepackUpdate: false
+    runFortifyClean: true
+    scaVerbose: false
+    scaDebug: false
+    runFortifyScan: true
+    fortifyScanType: 'Local'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
