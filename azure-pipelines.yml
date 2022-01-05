@@ -28,31 +28,12 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-# - task: PowerShell@2
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       Write-Host "##vso[task.setvariable variable=PATH;]${env:PATH};C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE";
-
-# - task: PowerShell@2
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       gci env:* | sort-object name
-#       Write-Host "Before call developer console"
-#       msbuild -version
-      
-#       'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools\Launch-VsDevShell.ps1'
-#       Write-Host "After call developer console"
-#       gci env:* | sort-object name
-#       msbuild -version
-
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: |
-      & 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools\Launch-VsDevShell.ps1'
-      msbuild -version
+      Write-Host "##vso[task.setvariable variable=PATH;]${env:PATH};C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE";
+
 
 - task: FortifySCA@7
   inputs:
