@@ -51,7 +51,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools\Launch-VsDevShell.ps1'
+      & 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools\Launch-VsDevShell.ps1'
       msbuild -version
 
 - task: FortifySCA@7
