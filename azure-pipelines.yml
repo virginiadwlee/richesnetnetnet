@@ -28,15 +28,21 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: BatchScript@1
+- task: PowerShell@2
   inputs:
-    filename: 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools\vsDevCmd.bat'
+    targetType: 'inline'
+    script: |
+      gci env:* | sort-object name
+      Write-Host "Before call developer console"
+      msbuild -version
+      
+      C:\BuildTools\Common7\Tools\Launch-VsDevShell.ps1
+      Write-Host "After call developer console"
+      gci env:* | sort-object name
+      msbuild -version
 
 - task: FortifySCA@7
   inputs:
-    filename: 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools\vsDevCmd.bat'
-
-
     runBuildTranslate: true
     applicationType: 'dotnet'
     fortifyProjects: '**\*.sln'
