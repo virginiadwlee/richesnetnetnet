@@ -34,7 +34,7 @@ steps:
 
 - task: FortifySCA@7
   inputs:
-filename: 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools\vsDevCmd.bat'
+    filename: 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools\vsDevCmd.bat'
 
 
     runBuildTranslate: true
