@@ -39,7 +39,7 @@ steps:
     script: |
       # Write your PowerShell commands here.
       
-      Write-Host "Hello World"
+
       Write-Host "##vso[task.setvariable variable=PATH;]${env:PATH};C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE"
 - task: FortifySCA@7
   inputs:
