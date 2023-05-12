@@ -1,5 +1,6 @@
 # ASP.NET
 
+
 # Build and test ASP.NET projects.
 # Add steps that publish symbols, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
@@ -36,18 +37,12 @@ steps:
     targetType: 'inline'
     script: |
       Write-Host "##vso[task.setvariable variable=PATH;]${env:PATH};C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE";
-- task: FortifySCA@7
+- task: FortifyScanCentralSAST@7
   inputs:
-    runBuildTranslate: true
-    applicationType: 'dotnet'
-    fortifyProjects: '**\*.sln'
-    fortifyBuildId: '0104riches'
-    runFortifyRulepackUpdate: false
-    runFortifyClean: true
-    scaVerbose: false
-    scaDebug: false
-    runFortifyScan: true
-    fortifyScanType: 'Local'
+    scanCentralCtrlUrl: 'http://192.168.213.188:8080/scancentral-ctrl'
+    scanCentralClientToken: '$(ScanCentral.ClientToken)'
+    sscUrl: 'http://192.168.213.191:8080/ssc'
+    sscCiToken: '$(ScanCentral.SscCiToken)'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
