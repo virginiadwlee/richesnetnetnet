@@ -51,7 +51,12 @@ steps:
     runFortifyScan: false
     fortifyScanType: 'Local'
 
- 
+- task: FortifyScanCentralSAST@7
+  inputs:
+    scanCentralCtrlUrl: 'http://192.168.213.188:8080/scancentral-ctrl'
+    scanCentralClientToken: '$(ScanCentral.ClientToken)'
+    sscUrl: 'http://192.168.213.191:8080/ssc'
+    sscCiToken: '$(ScanCentral.SscCiToken)'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
