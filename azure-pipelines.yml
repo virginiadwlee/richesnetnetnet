@@ -57,6 +57,7 @@ steps:
     scanCentralClientToken: '$(ScanCentral.ClientToken)'
     sscUrl: 'http://192.168.213.191:8080/ssc'
     sscCiToken: '$(ScanCentral.SscCiToken)'
+    buildTool: 'none'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
