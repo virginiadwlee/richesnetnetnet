@@ -53,10 +53,13 @@ steps:
 
 - task: FortifyScanCentralSAST@7
   inputs:
-    scanCentralCtrlUrl: 'http://192.168.213.188:8080/scancentral-ctrl'
+    scanCentralCtrlUrl: '$(ScanCentral.scanCentralCtrlUrl)'
     scanCentralClientToken: '$(ScanCentral.ClientToken)'
-    sscUrl: 'http://192.168.213.191:8080/ssc'
+    sscUrl: '$(ScanCentral.sscUrl)'
     sscCiToken: '$(ScanCentral.SscCiToken)'
+    uploadToSSC: true
+    applicationName: 'riches dotnet'
+    applicationVersion: '1'
     buildTool: 'none'
 - task: VSTest@2
   inputs:
